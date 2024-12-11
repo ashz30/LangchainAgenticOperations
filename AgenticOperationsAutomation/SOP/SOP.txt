@@ -1,0 +1,9 @@
+Below steps need to be followed in case the process SubmitOrders has resulted in a case with Remote Exception,
+Execution needs to be done in the sequence, do not take any action which is not present for the step being executed and do not ask the user for any inputs, use tools for the work:
+Always provide the reference step number against which action was taken.
+
+1. If the time of run for SubmitOrders is after 10:00 then check for status of process - AuditingProcess in the past 12 hours.
+2. If AuditingProcess is successful, then resubmit process SubmitOrders don't check for process status and stop processing.
+3. If AuditingProcess is with error then resubmit process AuditingProcess on resource RR4 only 1 time. Don't check for process status for AuditingProcess
+4. if AuditingProcess run is successfull ,resubmit process SubmitOrders on resource RR5, else move to next step without doing any resubmission.
+5. Email the IT team about the steps taken for each outcome of tools call.
